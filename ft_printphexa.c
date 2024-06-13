@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printchar.c                                     :+:      :+:    :+:   */
+/*   ft_printphexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: quenalla <quenalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 13:22:07 by quenalla          #+#    #+#             */
-/*   Updated: 2024/06/13 11:20:49 by quenalla         ###   ########.fr       */
+/*   Created: 2024/06/13 15:20:24 by quenalla          #+#    #+#             */
+/*   Updated: 2024/06/13 15:28:50 by quenalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"printf.h"
 
-int	ft_printchar(char c)
+int	ft_printphexa(void *str)
 {
-	ft_putchar_fd(&c, 1);
-	return (1);
+	int	len;
+
+	len = 0;
 }
