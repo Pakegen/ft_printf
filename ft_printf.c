@@ -6,13 +6,20 @@
 /*   By: quenalla <quenalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:25:16 by quenalla          #+#    #+#             */
-/*   Updated: 2024/06/13 15:13:51 by quenalla         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:12:50 by quenalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"printf.h"
+#include"ft_printf.h"
 
-static int	ft_format(va_list args, char str)
+
+int	ft_printchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+static int	ft_format(va_list args, const char str)
 {
 	int	len;
 
@@ -30,12 +37,9 @@ static int	ft_format(va_list args, char str)
 	else if (str == 'X')
 		len += ft_printmajhexa(va_arg(args, int));
 	else if (str == 'p')
-		len += ft_printphexa(va_arg(args, void *));
+		len += ft_printphexa(va_arg(args, unsigned int));
 	else if (str == '%')
-	{
-		write(1, "%", 1);
-		return (1);
-	}
+		len += ft_printchar(va_arg(args, char));
 	return (len);
 }
 
@@ -53,7 +57,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 				len += ft_format(args, str[++i]);
 		else
-			len += ft_putchar_fd(str[i], 1);
+			len += ft_printchar(str[i]);
 		i++;
 	}
 	va_end(args);

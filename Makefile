@@ -5,18 +5,18 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 SRCS = ft_printf.c\
-      ft_printstr.c\
-      ft_printnbr.c\
-      ft_printunsigned.c\
-      ft_printhexa.c\
+       ft_printstr.c\
+       ft_printnbr.c\
+       ft_printunsigned.c\
+       ft_printhexa.c\
+       ft_printmajhexa.c\
+       ft_printphexa.c\
 
-LIBFT_PATH = ./libft
-
-LIBFT = $(LIBFT_PATH)./libft.a
 
 OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(OBJS)
+$(NAME): $(LIBFT) $(OBJS)
+	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJ)
 
 %.o: %.c

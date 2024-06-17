@@ -6,36 +6,52 @@
 /*   By: quenalla <quenalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 12:54:24 by quenalla          #+#    #+#             */
-/*   Updated: 2024/06/13 15:08:34 by quenalla         ###   ########.fr       */
+/*   Updated: 2024/06/17 10:18:12 by quenalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"printf.h"
+#include"ft_printf.h"
+
+static int	ft_strcount(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n < 0)
+	{
+		len++;
+		n = -n;
+	}
+	while (n != 0)
+	{
+		len++;
+		n = n / 10;
+	}
+	return (len);
+}
 
 int	ft_printnbr(int n)
 {
-	long long int	nb;
-	long long int	compteur;
-	long long int	len;
+	long int	nb;
+	long int	compteur;
+	int			len;
 
 	nb = n;
-	len = 1;
+	len = ft_strcount(n);
+	compteur = 1;
 	if (nb == 0)
 		return (ft_printchar(n));
 	if (nb < 0)
 	{
-		ft_putchar('-');
+		ft_printchar('-');
 		nb = -nb;
 	}
-	while (compteur < nb)
-	{
-		if (compteur != nb)
-			len++;
+	while (compteur <= nb)
 		compteur = compteur * 10;
-	}
-	while ((compteur / 10) != 1)
+	while (compteur != 1)
 	{
-		ft_putchar(nb / compteur + '0');
+		compteur = compteur / 10;
+		ft_printchar(nb / compteur + '0');
 		nb = nb % compteur;
 	}
 	return (len);

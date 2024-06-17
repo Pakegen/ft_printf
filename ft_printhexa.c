@@ -6,17 +6,11 @@
 /*   By: quenalla <quenalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 11:30:46 by quenalla          #+#    #+#             */
-/*   Updated: 2024/06/13 12:56:00 by quenalla         ###   ########.fr       */
+/*   Updated: 2024/06/17 09:35:23 by quenalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<unistd.h>
-
-/*void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}*/
+#include"ft_printf.h"
 
 static int	ft_len_hexa(int i)
 {
@@ -44,15 +38,9 @@ int	ft_printhexa(int i)
 	else
 	{
 		if (i <= 9)
-			ft_putchar_fd(i + '0', 1);
+			ft_printchar(i + '0');
 		else
-			ft_putchar_fd(i - 10 + 'a', 1);
+			ft_printchar(i - 10 + 'a');
 	}
 	return (len);
 }
-/*
-int main()
-{
-	printf("je sais compter en hexa %x\n", 546456546);
-	ft_printhexa(546456546);
-}*/
